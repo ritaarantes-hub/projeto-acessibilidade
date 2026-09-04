@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Painel acessível para organização de tarefas e informações."
+    >
+
+    <title>IncluiWeb — Painel Acessível</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Link para pular diretamente para o conteúdo -->
+    <a class="skip-link" href="#conteudo">
+        Pular para o conteúdo principal
+    </a>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <div class="container header-content">
+
+            <a href="#" class="logo" aria-label="IncluiWeb - página inicial">
+                <span class="logo-icon" aria-hidden="true">♿</span>
+                <span>Inclui<span>Web</span></span>
+            </a>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+                aria-expanded="false"
+                aria-controls="mainMenu"
+            >
+                <span aria-hidden="true">☰</span>
+                <span>Menu</span>
+            </button>
+
+            <nav
+                class="navigation"
+                id="mainMenu"
+                aria-label="Navegação principal"
+            >
+                <a href="#inicio">Início</a>
+                <a href="#tarefas">Tarefas</a>
+                <a href="#recursos">Recursos</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+
+            <div class="accessibility-controls">
+
+                <button
+                    id="decreaseFont"
+                    type="button"
+                    aria-label="Diminuir tamanho do texto"
+                    title="Diminuir texto"
+                >
+                    A-
+                </button>
+
+                <button
+                    id="increaseFont"
+                    type="button"
+                    aria-label="Aumentar tamanho do texto"
+                    title="Aumentar texto"
+                >
+                    A+
+                </button>
+
+                <button
+                    id="contrastButton"
+                    type="button"
+                    aria-pressed="false"
+                    title="Ativar alto contraste"
+                >
+                    ◐
+                    <span class="sr-only">
+                        Alternar alto contraste
+                    </span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="conteudo">
+
+        <!-- HERO -->
+        <section
+            class="hero"
+            id="inicio"
+            aria-labelledby="hero-title"
+        >
+
+            <div class="container hero-grid">
+
+                <div class="hero-text">
+
+                    <span class="tag">
+                        ♡ Tecnologia para todos
+                    </span>
+
+                    <h1 id="hero-title">
+                        Uma experiência digital pensada para todas as pessoas.
+                    </h1>
+
+                    <p>
+                        O IncluiWeb é um painel criado com princípios de
+                        UX e acessibilidade para tornar a navegação mais
+                        simples, clara e inclusiva.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a class="button primary" href="#tarefas">
+                            Começar agora
+                        </a>
+
+                        <a class="button secondary" href="#recursos">
+                            Conhecer recursos
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="hero-card"
+                    aria-label="Resumo da acessibilidade do projeto"
+                >
+
+                    <div class="accessibility-symbol" aria-hidden="true">
+                        ♿
+                    </div>
+
+                    <h2>Acessibilidade em primeiro lugar</h2>
+
+                    <p>
+                        Contraste, foco visível, navegação por teclado,
+                        textos claros e componentes semânticos.
+                    </p>
+
+                    <div class="status">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Interface acessível
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAINEL -->
+        <section
+            class="dashboard container"
+            id="tarefas"
+            aria-labelledby="dashboard-title"
+        >
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="eyebrow">PAINEL</span>
+
+                    <h2 id="dashboard-title">
+                        Suas atividades
+                    </h2>
+
+                    <p>
+                        Organize suas tarefas de forma simples.
+                    </p>
+                </div>
+
+                <button
+                    class="button primary"
+                    id="addTaskButton"
+                    type="button"
+                >
+                    + Nova tarefa
+                </button>
+
+            </div>
+
+
+            <!-- CARDS DE RESUMO -->
+            <div class="summary-grid">
+
+                <article class="summary-card">
+                    <span class="summary-icon" aria-hidden="true">
+                        ✓
+                    </span>
+
+                    <div>
+                        <span class="summary-label">
+                            Concluídas
+                        </span>
+
+                        <strong id="completedCount">
+                            2
+                        </strong>
+                    </div>
+                </article>
+
+
+                <article class="summary-card">
+                    <span class="summary-icon" aria-hidden="true">
+                        !
+                    </span>
+
+                    <div>
+                        <span class="summary-label">
+                            Pendentes
+                        </span>
+
+                        <strong id="pendingCount">
+                            2
+                        </strong>
+                    </div>
+                </article>
+
+
+                <article class="summary-card">
+                    <span class="summary-icon" aria-hidden="true">
+                        %
+                    </span>
+
+                    <div>
+                        <span class="summary-label">
+                            Progresso
+                        </span>
+
+                        <strong id="progressCount">
+                            50%
+                        </strong>
+                    </div>
+                </article>
+
+            </div>
+
+
+            <!-- FILTROS -->
+            <div
+                class="filters"
+                role="group"
+                aria-label="Filtrar tarefas"
+            >
+
+                <button
+                    class="filter-button active"
+                    data-filter="all"
+                    type="button"
+                >
+                    Todas
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="pending"
+                    type="button"
+                >
+                    Pendentes
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="completed"
+                    type="button"
+                >
+                    Concluídas
+                </button>
+
+            </div>
+
+
+            <!-- LISTA DE TAREFAS -->
+            <div
+                class="task-list"
+                id="taskList"
+                aria-live="polite"
+            >
+
+                <article
+                    class="task-card completed"
+                    data-status="completed"
+                >
+
+                    <div class="task-check">
+
+                        <button
+                            class="check-button"
+                            type="button"
+                            aria-label="Marcar tarefa como pendente"
+                            aria-pressed="true"
+                        >
+                            ✓
+                        </button>
+
+                    </div>
+
+                    <div class="task-content">
+
+                        <h3>Conhecer os princípios de acessibilidade</h3>
+
+                        <p>
+                            Revisar conceitos de inclusão e usabilidade.
+                        </p>
+
+                        <span class="task-category">
+                            Estudos
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="delete-button"
+                        type="button"
+                        aria-label="Excluir tarefa: Conhecer os princípios de acessibilidade"
+                    >
+                        ×
+                    </button>
+
+                </article>
+
+
+                <article
+                    class="task-card completed"
+                    data-status="completed"
+                >
+
+                    <div class="task-check">
+
+                        <button
+                            class="check-button"
+                            type="button"
+                            aria-label="Marcar tarefa como pendente"
+                            aria-pressed="true"
+                        >
+                            ✓
+                        </button>
+
+                    </div>
+
+                    <div class="task-content">
+
+                        <h3>Testar navegação pelo teclado</h3>
+
+                        <p>
+                            Verificar se todos os elementos podem ser acessados.
+                        </p>
+
+                        <span class="task-category">
+                            Acessibilidade
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="delete-button"
+                        type="button"
+                        aria-label="Excluir tarefa: Testar navegação pelo teclado"
+                    >
+                        ×
+                    </button>
+
+                </article>
+
+
+                <article
+                    class="task-card"
+                    data-status="pending"
+                >
+
+                    <div class="task-check">
+
+                        <button
+                            class="check-button"
+                            type="button"
+                            aria-label="Marcar tarefa como concluída"
+                            aria-pressed="false"
+                        >
+                            ○
+                        </button>
+
+                    </div>
+
+                    <div class="task-content">
+
+                        <h3>Verificar contraste das cores</h3>
+
+                        <p>
+                            Conferir se textos e elementos possuem contraste adequado.
+                        </p>
+
+                        <span class="task-category">
+                            Design
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="delete-button"
+                        type="button"
+                        aria-label="Excluir tarefa: Verificar contraste das cores"
+                    >
+                        ×
+                    </button>
+
+                </article>
+
+
+                <article
+                    class="task-card"
+                    data-status="pending"
+                >
+
+                    <div class="task-check">
+
+                        <button
+                            class="check-button"
+                            type="button"
+                            aria-label="Marcar tarefa como concluída"
+                            aria-pressed="false"
+                        >
+                            ○
+                        </button>
+
+                    </div>
+
+                    <div class="task-content">
+
+                        <h3>Melhorar textos da interface</h3>
+
+                        <p>
+                            Tornar mensagens e instruções mais simples e objetivas.
+                        </p>
+
+                        <span class="task-category">
+                            UX Writing
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="delete-button"
+                        type="button"
+                        aria-label="Excluir tarefa: Melhorar textos da interface"
+                    >
+                        ×
+                    </button>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECURSOS -->
+        <section
+            class="resources"
+            id="recursos"
+            aria-labelledby="resources-title"
+        >
+
+            <div class="container">
+
+                <div class="section-heading centered">
+
+                    <span class="eyebrow">
+                        INCLUSÃO
+                    </span>
+
+                    <h2 id="resources-title">
+                        Recursos de acessibilidade
+                    </h2>
+
+                    <p>
+                        A interface foi pensada considerando diferentes
+                        necessidades de interação.
+                    </p>
+
+                </div>
+
+
+                <div class="resource-grid">
+
+                    <article class="resource-card">
+
+                        <div class="resource-icon" aria-hidden="true">
+                            Aa
+                        </div>
+
+                        <h3>Texto ajustável</h3>
+
+                        <p>
+                            O tamanho do texto pode ser aumentado ou diminuído
+                            sem perder a organização da página.
+                        </p>
+
+                    </article>
+
+
+                    <article class="resource-card">
+
+                        <div class="resource-icon" aria-hidden="true">
+                            ◐
+                        </div>
+
+                        <h3>Alto contraste</h3>
+
+                        <p>
+                            Uma opção de alto contraste facilita a visualização
+                            dos elementos da interface.
+                        </p>
+
+                    </article>
+
+
+                    <article class="resource-card">
+
+                        <div class="resource-icon" aria-hidden="true">
+                            ↹
+                        </div>
+
+                        <h3>Navegação por teclado</h3>
+
+                        <p>
+                            Os componentes interativos podem ser acessados
+                            usando a tecla Tab.
+                        </p>
+
+                    </article>
+
+
+                    <article class="resource-card">
+
+                        <div class="resource-icon" aria-hidden="true">
+                            ♡
+                        </div>
+
+                        <h3>Conteúdo claro</h3>
+
+                        <p>
+                            Textos objetivos ajudam as pessoas a compreender
+                            as informações e realizar ações.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOBRE -->
+        <section
+            class="about container"
+            id="sobre"
+            aria-labelledby="about-title"
+        >
+
+            <div class="about-box">
+
+                <div>
+
+                    <span class="eyebrow">
+                        SOBRE O PROJETO
+                    </span>
+
+                    <h2 id="about-title">
+                        Design inclusivo não é um detalhe.
+                    </h2>
+
+                    <p>
+                        A acessibilidade deve fazer parte do planejamento
+                        de uma interface desde o início. Este projeto demonstra
+                        como princípios de UX podem ser aplicados junto ao
+                        desenvolvimento para criar experiências melhores
+                        para diferentes pessoas.
+                    </p>
+
+                </div>
+
+                <div class="about-stat">
+
+                    <strong>100%</strong>
+
+                    <span>
+                        pensado para inclusão
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <strong>IncluiWeb</strong>
+
+                <p>
+                    Tecnologia acessível para todas as pessoas.
+                </p>
+
+            </div>
+
+            <p>
+                Projeto acadêmico • 2026
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- MODAL DE NOVA TAREFA -->
+    <div
+        class="modal"
+        id="taskModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        hidden
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="closeModal"
+                type="button"
+                aria-label="Fechar janela"
+            >
+                ×
+            </button>
+
+            <h2 id="modalTitle">
+                Criar nova tarefa
+            </h2>
+
+            <p>
+                Preencha os campos abaixo.
+            </p>
+
+            <form id="taskForm">
+
+                <div class="form-group">
+
+                    <label for="taskName">
+                        Nome da tarefa
+                    </label>
+
+                    <input
+                        type="text"
+                        id="taskName"
+                        name="taskName"
+                        placeholder="Ex.: Estudar HTML"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="taskDescription">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="taskDescription"
+                        name="taskDescription"
+                        rows="4"
+                        placeholder="Descreva a tarefa"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="taskCategory">
+                        Categoria
+                    </label>
+
+                    <select
+                        id="taskCategory"
+                        name="taskCategory"
+                    >
+                        <option value="Estudos">
+                            Estudos
+                        </option>
+
+                        <option value="Acessibilidade">
+                            Acessibilidade
+                        </option>
+
+                        <option value="Design">
+                            Design
+                        </option>
+
+                        <option value="Outros">
+                            Outros
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    class="button primary full-width"
+                    type="submit"
+                >
+                    Criar tarefa
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- MENSAGEM -->
+    <div
+        id="notification"
+        class="notification"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+    ></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
